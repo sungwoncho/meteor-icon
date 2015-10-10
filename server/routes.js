@@ -1,6 +1,4 @@
-var fs = Npm.require('fs');
-var s = fs.readFileSync(process.env.PWD + '/server/logoTemplate.svg').toString();
-var c = { w: 300 }
+var config = { w: 300 }
 
 WebApp.connectHandlers.use("/package", function(request, response) {
   var url = `https://atmospherejs.com/a/packages/findByNames?names=${request.url.split('/')[1]}`;
@@ -13,10 +11,13 @@ WebApp.connectHandlers.use("/package", function(request, response) {
       installyear = res.data[0]['installs-per-year'];
     }
 
+    SSR.compileTemplate('icon', Assets.getText('icon.svg'));
+    var params = {$wi: config.w, $n: name, $v: version, $p: pubdate,
+      $s: starCount.toLocaleString(), $i: installyear.toLocaleString()};
+    var icon = SSR.render('icon', params);
+
     response.writeHead(200, {"Content-Type": "image/svg+xml"});
-    s = s.replace(/\$wi/g, c.w).replace("$n", name).replace("$v", version).replace("$p", pubdate).
-          replace("$s", starCount.toLocaleString()).replace("$i", installyear.toLocaleString());
-    response.write(s);
+    response.write(icon);
     response.end();
   });
 });

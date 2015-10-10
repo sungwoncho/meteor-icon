@@ -22,3 +22,4 @@ http
 momentjs:moment
 reactive-var
 mquandalle:jade
+meteorhacks:ssr

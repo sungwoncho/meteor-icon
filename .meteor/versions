@@ -36,6 +36,7 @@ livedata@1.0.15
 logging@1.0.8
 meteor@1.1.9
 meteor-base@1.0.1
+meteorhacks:ssr@2.1.2
 minifiers@1.1.7
 minimongo@1.0.10
 mobile-experience@1.0.1
