@@ -3,30 +3,30 @@ function calcWidth(name) {
 }
 
 WebApp.connectHandlers.use("/package", function(request, response) {
-  if(request.url.split('/')[1] != ''){
-  var url = `https://atmospherejs.com/a/packages/findByNames\
+  if(request.url.split('/')[1] !== '') {
+    var url = `https://atmospherejs.com/a/packages/findByNames\
 ?names=${request.url.split('/')[1]}`;
-  HTTP.get(url, {headers: {'Accept': 'application/json'}}, function(err, res) {
-    var name = '';
-    var f = "MMM Do YYYY";
-    var payload = res.data[0];
+    var opts = {headers: {'Accept': 'application/json'}};
+    HTTP.get(url, opts, function(err, res) {
+      var name = '', version, pubDate, startCount, installYear;
+      var payload = res.data[0];
 
-    if (res.data.length != 0) {
-      var name = payload.name;
-      var version = payload.latestVersion.version;
-      var pubdate = moment(payload.latestVersion.published.$date).format(f);
-      var starCount = payload.starCount.toLocaleString();
-      var installyear = payload['installs-per-year'].toLocaleString();
-    }
+      if (res.data.length !== 0) {
+        name = payload.name;
+        version = payload.latestVersion.version;
+        pubDate = moment(payload.latestVersion.published.$date)
+                        .format('MMM Do YYYY');
+        starCount = payload.starCount.toLocaleString();
+        installYear = payload['installs-per-year'].toLocaleString();
+      }
 
-    SSR.compileTemplate('icon', Assets.getText('icon.svg'));
-    var width = calcWidth(name);
-    var params = {w: width, totalW: width+2, n: name, v: version, p: pubdate,
-      s: starCount, i: installyear};
-    var icon = SSR.render('icon', params);
+      SSR.compileTemplate('icon', Assets.getText('icon.svg'));
+      var width = calcWidth(name);
+      var icon = SSR.render('icon', {w: width, totalW: width+2, n: name,
+        v: version, p: pubDate, s: starCount, i: installYear});
 
-    response.writeHead(200, {"Content-Type": "image/svg+xml"});
-    response.end(icon);
-  });
-}
+      response.writeHead(200, {"Content-Type": "image/svg+xml"});
+      response.end(icon);
+    });
+  }
 });
