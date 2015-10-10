@@ -12,7 +12,7 @@ var serve = function(request, response) {
       <text x="20" y="20" font-family="Verdana" font-size="30">${res.data[0].name}</text>
       </svg>`);
     response.end();
-  })
+  });
 };
 
-WebApp.connectHandlers.use("/image", serve);
+WebApp.connectHandlers.use("/package", serve);
