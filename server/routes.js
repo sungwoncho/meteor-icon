@@ -1,5 +1,5 @@
 var fs = Npm.require('fs');
-var s = fs.readFileSync(process.env.PWD + '/server/logoTemplate.txt').toString();
+var s = fs.readFileSync(process.env.PWD + '/server/logoTemplate.svg').toString();
 var c = { w: 300 }
 
 WebApp.connectHandlers.use("/package", function(request, response) {
