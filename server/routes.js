@@ -29,20 +29,16 @@ var serve = function(request, response) {
   var url = `https://atmospherejs.com/a/packages/findByNames?names=${url_parts[1]}`;
   var opt = {headers: {'Accept': 'application/json'}};
   HTTP.get(url, opt, function (err, res) {
-
-    var name = '';
-    var version = '';
-    var pubdate = '';
-    var starCount = '';
-    var installyear = '';
+    var data = res.data[0];
+    var name, version, pubdate, starCount, installyear  = '';
 
     // Check to see if the response data is not empty
-    if(res.data.length != 0){
-      name = res.data[0].name;
-      version = res.data[0].latestVersion.version;
-      pubdate = moment(res.data[0].latestVersion.published.$date).format("MMM Do YYYY");
-      starCount = res.data[0].starCount;
-      installyear = res.data[0]['installs-per-year'];
+    if(data.length != 0){
+      name = data.name;
+      version = data.latestVersion.version;
+      pubdate = moment(data.latestVersion.published.$date).format("MMM Do YYYY");
+      starCount = data.starCount;
+      installyear = data['installs-per-year'];
     }
 
     response.writeHead(200, { "Content-Type": "image/svg+xml" });
