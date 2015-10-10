@@ -10,8 +10,7 @@ var c = { w: 300, h: 80, bg: '#eee', bgLogo: '#ccc', stroke: '#993333',
     }
 
 WebApp.connectHandlers.use("/package", function(request, response) {
-  var url = `https://atmospherejs.com/a/packages/findByNames?names=
-  ${request.url.split('/')[1]}`;
+  var url = `https://atmospherejs.com/a/packages/findByNames?names=${request.url.split('/')[1]}`;
   HTTP.get(url, {headers: {'Accept': 'application/json'}}, function(err, res) {
     if (res.data.length != 0) {
       name = res.data[0].name;
@@ -33,4 +32,4 @@ WebApp.connectHandlers.use("/package", function(request, response) {
     </svg>`);
     response.end();
   });
-};);
+});
