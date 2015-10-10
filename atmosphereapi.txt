@@ -1,0 +1,22 @@
+Atmospherejs Command
+curl --header "Accept: application/json" https://atmospherejs.com/a/packages/findByNames?names=iron:router
+
+returns a Json
+[
+   {
+      "installs-per-year":396194,
+      "latestVersion":{
+         "published":{
+            "$date":1444418432951
+         },
+         "version":"1.0.12",
+         "git":"https://github.com/iron-meteor/iron-router",
+         "description":"Routing specifically designed for Meteor",
+         "readme":"https://warehouse.meteor.com/readme/6iTDGkHykvraEarg4/1444418431562/8dyLcJ6hBg/iron:router-1.0.12-readme.md",
+         "unmigrated":false
+      },
+      "name":"iron:router",
+      "score":279.1083047864775,
+      "starCount":553
+   }
+]
