@@ -15,5 +15,4 @@ var serve = function(request, response) {
   })
 };
 
-
 WebApp.connectHandlers.use("/image", serve);
