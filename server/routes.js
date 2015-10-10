@@ -1,9 +1,12 @@
 var f = "MMM Do YYYY";
 
+function calcWidth(name) {
+  return 250 + name.length * 6.305555555555555;
+}
+
 WebApp.connectHandlers.use("/package", function(request, response) {
   var url = `https://atmospherejs.com/a/packages/findByNames\
 ?names=${request.url.split('/')[1]}`;
-  console.log(url);
   HTTP.get(url, {headers: {'Accept': 'application/json'}}, function(err, res) {
     var name = '';
     if (res.data.length != 0) {
@@ -15,12 +18,12 @@ WebApp.connectHandlers.use("/package", function(request, response) {
     }
 
     SSR.compileTemplate('icon', Assets.getText('icon.svg'));
-    var params = {width: 350, n: name, v: version, p: pubdate,
+    var width = calcWidth(name);
+    var params = {w: width, totalW: width+2, n: name, v: version, p: pubdate,
       s: starCount.toLocaleString(), i: installyear.toLocaleString()};
     var icon = SSR.render('icon', params);
 
     response.writeHead(200, {"Content-Type": "image/svg+xml"});
-    response.write(icon);
-    response.end();
+    response.end(icon);
   });
 });
