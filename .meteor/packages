@@ -21,3 +21,4 @@ insecure                # Allow all DB writes from clients (for prototyping)
 http
 momentjs:moment
 reactive-var
+mquandalle:jade

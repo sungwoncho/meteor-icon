@@ -5,4 +5,4 @@ Template.home.events({
     tpl.$('.demo-icon').attr('src', `package/${packageName}`);
     tpl.$('.embed-code').attr('value', `[![Build Status](package/${packageName})](package/${packageName})`).removeClass('hidden');
   }
-})
+});

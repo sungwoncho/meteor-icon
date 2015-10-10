@@ -1,0 +1,10 @@
+template(name='home')
+  img(src='package/tomi:upload-jquery')
+  h2 Get One
+  form.demo
+    input.package-name(type='text', placeholder='Your package name')
+    input(type='submit', value='Get one')
+  img.demo-icon
+  input.embed-code.hidden(type='text')
+body
+  | {{> home}}
