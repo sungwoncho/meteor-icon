@@ -1,9 +1,9 @@
 var config = { width: 300, height: 100, background: '#dedede', stroke: 'red' };
 
 var serve = function(request, response) {
-  var url_parts = request.url;
+  var url_parts = request.url.split('/');
 
-  var url = `https://atmospherejs.com/a/packages/findByNames?names=iron:router`;
+  var url = `https://atmospherejs.com/a/packages/findByNames?names=${url_parts[1]}`;
   var opt = {headers: {'Accept': 'application/json'}};
   HTTP.get(url, opt, function (err, res) {
     response.writeHead(200, { "Content-Type": "image/svg+xml" });
