@@ -14,7 +14,7 @@ It has 99 lines of code.
 
 ![](https://github.com/sungwoncho/meteor-icon/blob/master/assets/example.png)
 
-```markdwon
+```md
 [![Meteor Icon](http://icon.meteor.com/package/tomi:upload-jquery)]
 (https://atmospherejs.com/tomi/upload-jquery)
 ```
@@ -24,12 +24,9 @@ It has 99 lines of code.
 Meteor Icon builds better package ecosystem for Meteor by making it quicker
 and easier to communicate package information.
 
-It's a hassle to jump between GitHub and Atmosphere to research the package
-before using it. Meteor Icon allows authors to aggregate package information
-and present it with a swag.
-
-It also helps package users to make prompt and wise decisions about which
-package they need to use and how.
+We wanted to authors to aggregate package information and present it
+with a swag. Doing so also benefits users as they don't have to jump between
+Atmosphere and GitHub to collect information about the package.
 
 Inspired by [nodei.co](https://nodei.co/), Meteor Icon cleanly displays
 information including the install command, latest version, last published date,
@@ -43,7 +40,8 @@ submission.
 
 ### Video Demo
 
-[![Demo](http://img.youtube.com/vi/NQm33Wg1HHg/0.jpg)](https://www.youtube.com/watch?v=NQm33Wg1HHg "Demo")
+[![Demo](http://img.youtube.com/vi/NQm33Wg1HHg/0.jpg)]
+(https://www.youtube.com/watch?v=NQm33Wg1HHg "Demo")
 
 ### List of packages used
 
