@@ -5,7 +5,7 @@
 
 A simple Atmosphere badge to display the information about your package anywhere.
 
-It has 99 lines of code.
+It has 99 lines of code, 58 of which is JavaScript.
 
 ## How to use
 
