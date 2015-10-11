@@ -3,16 +3,16 @@ WebApp.connectHandlers.use("/package", function (request, response) {
 ?names=${request.url.split('/')[1]}`;
   var opts = {headers: {'Accept': 'application/json'}};
   HTTP.get(url, opts, function(err, res) {
-    var name = '', pl = res.data[0], version, pubDate, starCount, installYear, icon;
+    var name = '', pl = res.data[0], version, pubDate, starCount, inst, icon;
     if (res.data.length !== 0) {
       name = pl.name; version = pl.latestVersion.version;
       pubDate = moment(pl.latestVersion.published.$date).format('MMM Do YYYY');
       starCount = pl.starCount || 0;
-      installYear = pl['installs-per-year'] || 0;
+      inst = pl['installs-per-year'] || 0;
     }
     var width = 225 + name.length * 6.305555555555555;
     var params = {w: width, totalW: width+2, n: name,
-      v: version, p: pubDate, s: starCount, i: installYear, ls: (width - 75)};
+      v: version, p: pubDate, s: starCount, i: inst, ls: (width - 75)};
     var c = DDP.connect('https://atmospherejs.com/');
     var cl = new Meteor.Collection('scores', c);
     response.writeHead(200, {"Content-Type": "image/svg+xml"});

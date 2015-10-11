@@ -9,7 +9,7 @@ It has 99 lines of code.
 
 ## How to use
 
-1. Go to [Meteor Icon](http://icon.meteor.com/) and type in your package name.
+1. Go to [icon.meteor.com](http://icon.meteor.com/) and type in your package name.
 2. Grab the markdown code and embed into GitHub or anywhere you want!
 
 ![](https://github.com/sungwoncho/meteor-icon/blob/master/assets/example.png)
@@ -21,14 +21,19 @@ It has 99 lines of code.
 
 ## Why?
 
-Meteor Icon helps package authors and users by making it easy to share
-quality information about packages.
+Meteor Icon builds better package ecosystem for Meteor by making it quicker
+and easier to communicate package information.
 
-It takes time to jump between GitHub and Atmosphere to collect information about
-the package. Meteor Icon saves it.
+It's a hassle to jump between GitHub and Atmosphere to research the package
+before using it. Meteor Icon allows authors to aggregate package information
+and present it with a swag.
 
-The icon cleanly displays information including the install command,
-latest version, last published date, popularity measures.
+It also helps package users to make prompt and wise decisions about which
+package they need to use and how.
+
+Inspired by [nodei.co](https://nodei.co/), Meteor Icon cleanly displays
+information including the install command, latest version, last published date,
+popularity measures.
 
 
 ## Meteor Hackathon 2015
@@ -38,7 +43,7 @@ submission.
 
 ### Video Demo
 
-TODO: ADD Video demo
+[![Demo](http://img.youtube.com/vi/NQm33Wg1HHg/0.jpg)](https://www.youtube.com/watch?v=NQm33Wg1HHg "Demo")
 
 ### List of packages used
 
@@ -49,12 +54,17 @@ TODO: ADD Video demo
 
 ### Collaborators
 
-From [Meteor Sydney](www.meetup.com/Meteor-Sydney/):
+From [Meteor Sydney](http://www.meetup.com/Meteor-Sydney/):
 
 * [sungwoncho](https://github.com/sungwoncho/)
 * [tomitrescak](https://github.com/tomitrescak)
 * [woody1990](https://github.com/woody1990)
 
+
+## Roadmap
+
+- [ ] Caching by comparing timestamp
+- [ ] Support for MDG packages
 
 ## License
 
