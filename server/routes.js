@@ -1,14 +1,9 @@
-function calcWidth(name) {
-  return 250 + name.length * 6.305555555555555;
-}
-
 WebApp.connectHandlers.use("/package", function(request, response) {
   var url = `https://atmospherejs.com/a/packages/findByNames\
 ?names=${request.url.split('/')[1]}`;
   var opts = {headers: {'Accept': 'application/json'}};
   HTTP.get(url, opts, function(err, res) {
-    var name = '', version, pubDate, starCount, installYear;
-    var pl = res.data[0];
+    var name = '', pl = res.data[0], version, pubDate, starCount, installYear;
 
     if (res.data.length !== 0) {
       name = pl.name;
@@ -18,7 +13,7 @@ WebApp.connectHandlers.use("/package", function(request, response) {
       installYear = pl['installs-per-year'] || 0;
     }
 
-    var width = calcWidth(name);
+    var width = 225 + name.length * 6.305555555555555;
     var c = DDP.connect('https://atmospherejs.com/');
     var cl = new Meteor.Collection('scores', c);
     c.subscribe('package/dailyScores', request.url.split('/')[1], function(er, m) {

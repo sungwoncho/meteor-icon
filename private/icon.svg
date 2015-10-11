@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="{{totalW}}" height="82" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs><style type="text/css">
-    rect, line { stroke: #6064AD; stroke-width: 4 }
-    text { font-family: Verdana }
-  </style></defs>
+<svg xmlns="http://www.w3.org/2000/svg" width="{{totalW}}" height="82">
+  <defs><style type="text/css">rect, line { stroke: #6064AD; stroke-width: 4 }
+    text { font-family: Verdana }</style></defs>
   <rect x="1" y="1" width="{{w}}" height="80" fill="#eee" stroke-width="1"
     stroke="#7679B0" />
   <polyline points="{{#each scores}}{{this}} {{/each}}" style="fill:#CFD0E6;stroke:#6064AD;stroke-width:2" />
@@ -13,9 +11,7 @@
     <text x="100" y="57" font-size="10">{{s}} ★ last update {{p}}</text>
     <text x="100" y="70" font-size="10">{{i}} downloads in the last year</text>
   {{else}}
-    <text x="100" y="20" font-size="13" font-weight="bold">
-      No package found
-    </text>
+    <text x="100" y="20" font-size="13" font-weight="bold">Not Found</text>
   {{/if}}
   <text x="{{ ls }}" y="40" font-size="9" >{{lsv}}</text>
   <rect x="10" y="10" width="60" height="60" fill="#ccc" />
