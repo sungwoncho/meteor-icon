@@ -3,17 +3,19 @@
     text { font-family: Verdana }</style></defs>
   <rect x="1" y="1" width="{{w}}" height="80" fill="#eee" stroke-width="1"
     stroke="#7679B0" />
-  <polyline points="{{#each scores}}{{this}} {{/each}}" style="fill:#CFD0E6;stroke:#6064AD;stroke-width:2" />
+  <polyline points="{{#each scores}}{{this}} {{/each}}"
+    style="fill:#CFD0E6;stroke:#6064AD;stroke-width:2" />
   {{#if n}}
-    <text x="100" y="20" font-size="12" font-weight="bold">meteor add {{n}}</text>
-
+    <text x="100" y="20" font-size="12" font-weight="bold">
+      meteor add {{n}}</text>
     <text x="100" y="40" font-size="11" font-weight="bold">v{{v}}</text>
     <text x="100" y="57" font-size="10">{{s}} ★ last update {{p}}</text>
     <text x="100" y="70" font-size="10">{{i}} downloads in the last year</text>
   {{else}}
     <text x="100" y="20" font-size="13" font-weight="bold">Not Found</text>
   {{/if}}
-  <text x="{{ ls }}" y="40" font-size="10" fill="#262845" >{{st}} {{lsv}}</text>
+  <text x="{{ ls }}" y="40" font-size="10" fill="#262845" >
+    {{st}} {{lsv}}</text>
   <rect x="10" y="10" width="60" height="60" fill="#ccc" />
   <rect x="75" y="10" width="15" height="10" fill="#ccc" />
   <rect x="75" y="25" width="15" height="45" fill="#ccc" />
