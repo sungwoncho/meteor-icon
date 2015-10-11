@@ -9,7 +9,7 @@ Template.home.events({
     var iconPath = Meteor.absoluteUrl(`package/${fullName}`);
     tpl.$('.demo-icon').attr('src', iconPath);
     tpl.$('.embed-code').val(`[![Meteor Icon](${iconPath})](https://\
-atmospherejs.com/${fullName.replace(/\:/, '/')}`).show();
+atmospherejs.com/${fullName.replace(/\:/, '/')})`).show();
   },
   'click .embed-code': function (e, tpl) {
     tpl.$('.embed-code').select();
