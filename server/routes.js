@@ -7,16 +7,15 @@ WebApp.connectHandlers.use("/package", function(request, response) {
 ?names=${request.url.split('/')[1]}`;
   var opts = {headers: {'Accept': 'application/json'}};
   HTTP.get(url, opts, function(err, res) {
-    var name = '', version, pubDate, startCount, installYear;
+    var name = '', version, pubDate, starCount, installYear;
     var payload = res.data[0];
 
-    if (res.data.length !== 0) {
+    if (! res.data.length) {
       name = payload.name;
       version = payload.latestVersion.version;
-      pubDate = moment(payload.latestVersion.published.$date)
-                      .format('MMM Do YYYY');
-      starCount = payload.starCount.toLocaleString();
-      installYear = payload['installs-per-year'].toLocaleString();
+      pubDate = moment(payload.latestVersion.published.$date).format('MMM Do YYYY');
+      starCount = payload.starCount || 0;
+      installYear = payload['installs-per-year'] || 0;
     }
 
     SSR.compileTemplate('icon', Assets.getText('icon.svg'));
