@@ -27,7 +27,6 @@ WebApp.connectHandlers.use("/package", function (request, response) {
       });
 
       SSR.compileTemplate('icon', Assets.getText('icon.svg'));
-
       var icon = SSR.render('icon', {w: width, totalW: width+2, n: name,
         v: version, p: pubDate, s: starCount, i: installYear, scores: scores,
         ls: (width - 75), lsv: max,
@@ -37,7 +36,5 @@ WebApp.connectHandlers.use("/package", function (request, response) {
       response.writeHead(200, {"Content-Type": "image/svg+xml"});
       response.end(icon);
     });
-
-
   });
 });
