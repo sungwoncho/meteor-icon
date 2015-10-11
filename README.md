@@ -42,7 +42,7 @@ TODO: ADD Video demo
 
 ### List of packages used
 
-* [http](https://atmospherejs.com/meteor/http) -
+* [http](https://atmospherejs.com/meteor/http)
 * [momentjs:moment](https://github.com/moment/moment/)
 * [mquandalle:jade](https://github.com/mquandalle/meteor-jade)
 * [meteorhacks:ssr](https://github.com/meteorhacks/meteor-ssr)
