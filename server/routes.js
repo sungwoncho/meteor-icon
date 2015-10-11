@@ -1,7 +1,3 @@
-function calcWidth(name) {
-  return 225 + name.length * 6.305555555555555;
-}
-
 WebApp.connectHandlers.use("/package", function(request, response) {
   var url = `https://atmospherejs.com/a/packages/findByNames\
 ?names=${request.url.split('/')[1]}`;
@@ -19,7 +15,7 @@ WebApp.connectHandlers.use("/package", function(request, response) {
     }
 
     SSR.compileTemplate('icon', Assets.getText('icon.svg'));
-    var width = calcWidth(name);
+    var width = 225 + name.length * 6.305555555555555;
     var icon = SSR.render('icon', {w: width, totalW: width+2, n: name,
       v: version, p: pubDate, s: starCount, i: installYear});
 
