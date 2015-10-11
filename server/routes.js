@@ -3,8 +3,7 @@ WebApp.connectHandlers.use("/package", function(request, response) {
 ?names=${request.url.split('/')[1]}`;
   var opts = {headers: {'Accept': 'application/json'}};
   HTTP.get(url, opts, function(err, res) {
-    var name = '', version, pubDate, starCount, installYear;
-    var pl = res.data[0];
+    var name = '', pl = res.data[0], version, pubDate, starCount, installYear;
 
     if (res.data.length !== 0) {
       name = pl.name;
