@@ -14,7 +14,7 @@
     <text x="100" y="70" font-size="10">{{i}} downloads in the last year</text>
   {{else}}
     <text x="100" y="20" font-size="13" font-weight="bold">
-      No package found
+      Not Found
     </text>
   {{/if}}
   <rect x="10" y="10" width="60" height="60" fill="#ccc" />

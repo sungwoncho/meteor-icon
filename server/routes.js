@@ -1,5 +1,5 @@
 function calcWidth(name) {
-  return 250 + name.length * 6.305555555555555;
+  return 225 + name.length * 6.305555555555555;
 }
 
 WebApp.connectHandlers.use("/package", function(request, response) {
