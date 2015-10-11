@@ -7,6 +7,7 @@ A simple Atmosphere badge to display the information about your package anywhere
 ## How to use
 Go to [Meteor Icon](icon.meteor.com) and type in your package name.
 Grab the markdown code as shown bellow and embed into github or anywhere you want!
+
 ![](https://github.com/sungwoncho/meteor-icon/blob/master/assets/example.png)
 
 ```
