@@ -1,11 +1,11 @@
 template(name='home')
   h1 Meteor Icon
-  img.demo-icon(src='package/tomi:upload-jquery')
+  img(src='package/tomi:upload-jquery')
   textarea.embed-code(rows='5' cols='50' readonly='readonly')
   form.demo-form
     input.package-name(type='text' required, pattern='.+\\:.+'
      placeholder='Your package name (e.g. iron:router)')
-    input.btn(type='submit' value='Get one')
+    input(type='submit' value='Get one')
 head
   link(href='https://fonts.googleapis.com/css?family=Montserrat'
    rel='stylesheet' type='text/css')
