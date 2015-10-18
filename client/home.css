@@ -1,3 +1,14 @@
-body { font-family: 'Montserrat', sans-serif; text-align: center; }
-.package-name { padding: 5px 8px; font-size: 15px; width: 270px; }
-.embed-code, img { display: block; margin: 0 auto; margin-bottom: 12px; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+.package-name {
+  padding: 5px 8px;
+  font-size: 15px;
+  width: 270px;
+}
+.embed-code, img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 12px;
+}

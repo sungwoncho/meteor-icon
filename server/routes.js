@@ -1,35 +1,69 @@
+// 6.30555 is an average width of alphanumeric characters in this fontSize
+function getWidth(name) {
+  return 225 + name.length * 6.305555555555555;
+}
+
 WebApp.connectHandlers.use("/package", function (request, response) {
-  var url = `https://atmospherejs.com/a/packages/findByNames\
-?names=${request.url.split('/')[1]}`;
+  response.writeHead(200, {"Content-Type": "image/svg+xml"});
+  SSR.compileTemplate('icon', Assets.getText('icon.svg'));
+
+  var pkgName = request.url.split('/')[1];
+  var url = `https://atmospherejs.com/a/packages/findByNames\?names=${pkgName}`;
   var opts = {headers: {'Accept': 'application/json'}};
+
   HTTP.get(url, opts, function(err, res) {
-    var name = '', pl = res.data[0], version, pubDate, starCount, inst, icon;
+    var name = '';
+    var pkg = res.data[0];
+    var version, pubDate, starCount, installCount, icon;
+
     if (res.data.length !== 0) {
-      name = pl.name; version = pl.latestVersion.version;
-      pubDate = moment(pl.latestVersion.published.$date).format('MMM Do YYYY');
-      starCount = pl.starCount || 0;
-      inst = pl['installs-per-year'] || 0;
+      name = pkg.name;
+      version = pkg.latestVersion.version;
+      pubDate = moment(pkg.latestVersion.published.$date).format('MMM Do YYYY');
+      starCount = pkg.starCount || 0;
+      installCount = pkg['installs-per-year'] || 0;
     }
-    var width = 225 + name.length * 6.305555555555555;
-    var params = {w: width, totalW: width+2, n: name,
-      v: version, p: pubDate, s: starCount, i: inst, ls: (width - 75)};
-    var c = DDP.connect('https://atmospherejs.com/');
-    var cl = new Meteor.Collection('scores', c);
-    response.writeHead(200, {"Content-Type": "image/svg+xml"});
-    SSR.compileTemplate('icon', Assets.getText('icon.svg'));
+
+    var width = getWidth(name);
+    var params = {width: width, totalWidth: width+2, name: name,
+                  version: version, pubDate: pubDate, starCount: starCount,
+                  installCount: installCount, logoOffset: (width - 75)};
+
+    var atmosphere = DDP.connect('https://atmospherejs.com/');
+    var scoresCollection = new Meteor.Collection('scores', atmosphere);
+
     if (name) {
-      c.subscribe('package/dailyScores', name, function(er, m) {
-        var min = 100000, max = 0, scores= [width + "," + 80, "0,80"], i=0;
-        cl.find().forEach(function(data){
-          data.score > max ? (max = Math.ceil(data.score))
-          : (data.score < min ? min = data.score : min = min);
+      atmosphere.subscribe('package/dailyScores', name, function(er, m) {
+        var min = 100000,
+            max = 0,
+            scores= [width + "," + 80, "0,80"],
+            i=0;
+
+        scoresCollection.find().forEach(function(data){
+          if (data.score > max) {
+            max = Math.ceil(data.score);
+          } else if (data.score < min) {
+            min = data.score;
+          } else {
+            min = min;
+          }
         });
-        cl.find().forEach(function(data){
+        scoresCollection.find().forEach(function(data){
           scores.push((i++*(width/5)) + "," +
            ((30 - 30 * ((data.score-min) / (max-min))) + 23));
         });
-        _.extend(params, {scores: scores, lsv: max, st: max > 4 ? "★★★★★"
-        : ("★★★★★".substring(0, max) + "☆☆☆☆".substring(0, 5-max))});
+
+        var stars;
+        if (max > 4) {
+          stars = "★★★★★";
+        } else {
+          stars = "★★★★★".substring(0, max) + "☆☆☆☆".substring(0, 5-max);
+        }
+
+        _.extend(params, {
+          scores: scores, lsv: max, stars: stars
+        });
+
         icon = SSR.render('icon', params);
         response.end(icon);
       });
