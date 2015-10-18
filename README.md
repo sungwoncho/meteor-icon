@@ -5,7 +5,9 @@
 
 A simple Atmosphere badge to display the information about your package anywhere.
 
-It has 99 lines of code, 58 of which is JavaScript.
+Winner of [2015 Meteor Global Distributed Hackathon]
+(http://info.meteor.com/blog/meteor-global-distributed-hackathon-winners) for
+the Best Submission using less than 100 Lines of JavaScript.
 
 ## How to use
 
@@ -33,24 +35,13 @@ information including the install command, latest version, last published date,
 popularity measures.
 
 
-## Meteor Hackathon 2015
-
-This is a [Meteor Global Distributed Hackathon 2015](http://meteor-2015.devpost.com/)
-submission.
-
-### Video Demo
+## Video Demo
 
 [![Demo](http://img.youtube.com/vi/NQm33Wg1HHg/0.jpg)]
 (https://www.youtube.com/watch?v=NQm33Wg1HHg "Demo")
 
-### List of packages used
 
-* [http](https://atmospherejs.com/meteor/http)
-* [momentjs:moment](https://github.com/moment/moment/)
-* [mquandalle:jade](https://github.com/mquandalle/meteor-jade)
-* [meteorhacks:ssr](https://github.com/meteorhacks/meteor-ssr)
-
-### Collaborators
+## Collaborators
 
 From [Meteor Sydney](http://www.meetup.com/Meteor-Sydney/):
 
@@ -63,6 +54,12 @@ From [Meteor Sydney](http://www.meetup.com/Meteor-Sydney/):
 
 - [ ] Caching by comparing timestamp
 - [ ] Support for MDG packages
+
+
+## Contributing
+
+Feel free to open an issue with a feature request or a bug.
+
 
 ## License
 
