@@ -17,6 +17,8 @@ Meteor.methods({
     }
 
     function getGraph(scores, width) {
+      if (! scores) return;
+
       var min = 100000,
           max = 0,
           scoreGraph= [width + "," + 80, "0,80"],
