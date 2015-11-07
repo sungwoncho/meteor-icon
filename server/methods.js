@@ -104,7 +104,7 @@ Meteor.methods({
       return PackageInfo.upsert({name: pkg.name}, modifier);
     }
   },
-  incrementPackageCounter(name) {
+  incrementRequestCount(name) {
     check(name, String);
     return PackageInfo.update({name: name}, {$inc: {requestCount: 1}});
   }

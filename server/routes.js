@@ -7,7 +7,7 @@ WebApp.connectHandlers.use("/package", function (request, response) {
       response.end(err.message);
     }
 
-    Meteor.call('incrementPackageCounter', pkgName);
+    Meteor.call('incrementRequestCount', pkgName);
 
     SSR.compileTemplate('icon', Assets.getText('icon.svg'));
     response.writeHead(200, {"Content-Type": "image/svg+xml"});
