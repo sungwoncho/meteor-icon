@@ -84,6 +84,9 @@ Meteor.methods({
 
     var atmosphereConn = DDP.connect('https://atmospherejs.com/');
     var scoresCollection = new Meteor.Collection('scores', atmosphereConn);
+
+    // Since this DDP call is asynchronous,
+    // users might see old data for a short while until the call completes
     atmosphereConn.subscribe('package/dailyScores', name, function () {
       var scores = scoresCollection.find().fetch();
       if (scores) {
