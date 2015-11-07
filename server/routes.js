@@ -4,7 +4,7 @@ WebApp.connectHandlers.use("/package", function (request, response) {
   Meteor.call('getPackageParams', pkgName, {graph: true}, function (err, params) {
     if (err) {
       console.log('Error occurred while getting package params', err);
-      response.end(err.message);
+      return response.end(err.message);
     }
 
     Meteor.call('incrementRequestCount', pkgName);
