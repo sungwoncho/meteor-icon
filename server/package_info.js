@@ -16,6 +16,11 @@ var schema = new SimpleSchema({
   installCount: {
     type: Number
   },
+  scores: {
+    type: [Object],
+    optional: true,
+    blackbox: true
+  },
   // Last time the icon for this package was requested
   lastRequestedAt: {
     type: Date,
