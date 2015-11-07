@@ -6,7 +6,6 @@ Meteor.methods({
   getPackageParams(name) {
     check(name, String);
     this.unblock();
-
     var endpoint = getAtmosphereEndpoint(name);
     var options = {headers: {'Accept': 'application/json'}};
 

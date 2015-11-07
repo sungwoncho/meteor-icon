@@ -1,15 +1,15 @@
 WebApp.connectHandlers.use("/package", function (request, response) {
-  response.writeHead(200, {"Content-Type": "image/svg+xml"});
   SSR.compileTemplate('icon', Assets.getText('icon.svg'));
 
   var pkgName = request.url.split('/')[1];
 
   Meteor.call('getPackageParams', pkgName, function (err, res) {
     if (err) {
-      console.log('error occurred');
-      response.end(err);
+      console.log('Error occurred while getting package params', err);
+      response.end(err.message);
     }
 
+    response.writeHead(200, {"Content-Type": "image/svg+xml"});
     Meteor.call('incrementPackageCounter', pkgName);
 
     var atmosphere = DDP.connect('https://atmospherejs.com/');
