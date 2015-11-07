@@ -7,7 +7,7 @@ WebApp.connectHandlers.use("/package", function (request, response) {
   response.writeHead(200, {"Content-Type": "image/svg+xml"});
   SSR.compileTemplate('icon', Assets.getText('icon.svg'));
 
-  var pkgName = request.url.split('/')[1];
+  var pkgName = request._parsedUrl.pathname.split('/')[2];
   var url = `https://atmospherejs.com/a/packages/findByNames\?names=${pkgName}`;
   var opts = {headers: {'Accept': 'application/json'}};
 
@@ -34,35 +34,37 @@ WebApp.connectHandlers.use("/package", function (request, response) {
 
     if (name) {
       atmosphere.subscribe('package/dailyScores', name, function(er, m) {
-        var min = 100000,
-            max = 0,
-            scores= [width + "," + 80, "0,80"],
-            i=0;
+        if (request.query.scores === 'true') {
+          var min = 100000,
+              max = 0,
+              scores= [width + "," + 80, "0,80"],
+              i=0;
 
-        scoresCollection.find().forEach(function(data){
-          if (data.score > max) {
-            max = Math.ceil(data.score);
-          } else if (data.score < min) {
-            min = data.score;
+          scoresCollection.find().forEach(function(data){
+            if (data.score > max) {
+              max = Math.ceil(data.score);
+            } else if (data.score < min) {
+              min = data.score;
+            } else {
+              min = min;
+            }
+          });
+          scoresCollection.find().forEach(function(data){
+            scores.push((i++*(width/5)) + "," +
+             ((30 - 30 * ((data.score-min) / (max-min))) + 23));
+          });
+
+          var stars;
+          if (max > 4) {
+            stars = "★★★★★";
           } else {
-            min = min;
+            stars = "★★★★★".substring(0, max) + "☆☆☆☆".substring(0, 5-max);
           }
-        });
-        scoresCollection.find().forEach(function(data){
-          scores.push((i++*(width/5)) + "," +
-           ((30 - 30 * ((data.score-min) / (max-min))) + 23));
-        });
 
-        var stars;
-        if (max > 4) {
-          stars = "★★★★★";
-        } else {
-          stars = "★★★★★".substring(0, max) + "☆☆☆☆".substring(0, 5-max);
+          _.extend(params, {
+            scores: scores, lsv: max, stars: stars
+          });
         }
-
-        _.extend(params, {
-          scores: scores, lsv: max, stars: stars
-        });
 
         icon = SSR.render('icon', params);
         response.end(icon);
