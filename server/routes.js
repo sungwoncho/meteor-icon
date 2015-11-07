@@ -1,6 +1,4 @@
 WebApp.connectHandlers.use("/package", function (request, response) {
-  SSR.compileTemplate('icon', Assets.getText('icon.svg'));
-
   var pkgName = request.url.split('/')[1];
 
   Meteor.call('getPackageParams', pkgName, {graph: true}, function (err, params) {
@@ -11,8 +9,8 @@ WebApp.connectHandlers.use("/package", function (request, response) {
 
     Meteor.call('incrementPackageCounter', pkgName);
 
+    SSR.compileTemplate('icon', Assets.getText('icon.svg'));
     response.writeHead(200, {"Content-Type": "image/svg+xml"});
-    var icon = SSR.render('icon', params);
-    response.end(icon);
+    response.end(SSR.render('icon', params));
   });
 });
