@@ -32,7 +32,7 @@ popularity measures.
 
 * Default
 
-[![Meteor Icon](http://icon.meteor.com/package/tomi:upload-jquery)]
+[![Meteor Icon](http://icon.meteor.com/package/tomi:upload-jquery#)]
 (https://atmospherejs.com/tomi/upload-jquery)
 
 *http://icon.meteor.com/package/tomi:upload-jquery*
