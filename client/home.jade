@@ -6,9 +6,14 @@ template(name='home')
     input.package-name(type='text' required, pattern='.+\\:.+'
      placeholder='Your package name (e.g. iron:router)')
     input(type='submit' value='Get one')
+
+  footer
+    a(href="https://github.com/sungwoncho/meteor-icon" target="_blank") GitHub page
+
 head
   link(href='https://fonts.googleapis.com/css?family=Montserrat'
    rel='stylesheet' type='text/css')
   link(rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32")
+
 body
-  | {{> home}}
+  +home
