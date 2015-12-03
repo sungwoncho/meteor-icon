@@ -17,9 +17,9 @@ es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
 
 http
+check
+react
+
 momentjs:moment
-reactive-var
-mquandalle:jade
 meteorhacks:ssr
 aldeed:collection2
-check
