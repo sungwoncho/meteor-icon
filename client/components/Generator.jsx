@@ -11,8 +11,7 @@ Generator = React.createClass({
         <form className="demo-form" onSubmit={this.handleSubmit}>
           <input type="text"
                  required="required"
-                 pattern=".*\:?.+"
-                 placeholder="Your package name (e.g. iron:router)"
+                 placeholder="Your package name (e.g. semantic:ui)"
                  className="package-name"
                  ref="packageName" />
           <input type="submit"

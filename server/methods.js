@@ -112,5 +112,16 @@ Meteor.methods({
   incrementRequestCount(name) {
     check(name, String);
     return PackageInfo.update({name: name}, {$inc: {requestCount: 1}});
+  },
+
+  // If Atmosphere responds with an empty array, the package is not published
+  // there, and hence invalid
+  validatePackageName(packageName) {
+    this.unblock();
+    var endpoint = `https://atmospherejs.com/a/packages/findByNames\?names=${packageName}`;
+    var options = {headers: {'Accept': 'application/json'}};
+    var response = HTTP.get(endpoint, options);
+
+    return response.data.length > 0;
   }
 });

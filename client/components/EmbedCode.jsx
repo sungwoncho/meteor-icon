@@ -1,13 +1,26 @@
 EmbedCode = React.createClass({
+  componentDidUpdate() {
+    Meteor.call('validatePackageName', this.props.packageOnDisplay, (err, res) => {
+      if (err) {
+        console.log('Error while validating package name', err);
+        return;
+      }
+
+      if (! res) {
+        this.refs.embedCode.value = 'There is no package by that name.';
+      }
+    });
+  },
+
   getEmbedCode() {
-    var fullName = this.props.packageOnDisplay;
-    var iconPath = Meteor.absoluteUrl(`package/${fullName}`);
+    var packageName = this.props.packageOnDisplay;
+    var iconPath = Meteor.absoluteUrl(`package/${packageName}`);
 
     var base = `[![Meteor Icon](${iconPath})](https://atmospherejs.com/`;
-    if (fullName.split(':')[1]) {
-      return base.concat(`${fullName.replace(/\:/, '/')}`);
+    if (packageName.split(':')[1]) {
+      return base.concat(`${packageName.replace(/\:/, '/')}`);
     } else {
-      return base.concat(`meteor/${fullName.split(':')[0]})`);
+      return base.concat(`meteor/${packageName.split(':')[0]})`);
     }
   },
 
@@ -17,6 +30,7 @@ EmbedCode = React.createClass({
                 cols="50"
                 readOnly="readonly"
                 className="embed-code"
+                ref="embedCode"
                 value={this.getEmbedCode()} />
     );
   }
