@@ -10,7 +10,7 @@ Meteor.methods({
     // 6.30555 is an average width of alphanumeric characters in this fontSize
     function getWidth(name) {
       if (name) {
-        return 225 + name.length * 6.305555555555555;
+        return 255 + name.length * 6.305555555555555;
       } else {
         return 225;
       }

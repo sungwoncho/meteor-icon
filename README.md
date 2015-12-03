@@ -65,7 +65,7 @@ From [Meteor Sydney](http://www.meetup.com/Meteor-Sydney/):
 ## Roadmap
 
 - [x] Caching by comparing timestamp
-- [ ] Support for MDG packages
+- [x] Support for MDG packages
 
 
 ## Contributing
