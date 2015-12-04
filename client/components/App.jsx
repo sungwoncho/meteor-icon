@@ -14,7 +14,7 @@ App = React.createClass({
       <div>
         <div className="ui center aligned grid">
           <div className="column eight wide" id="main-box">
-            <img className="ui centered small image" src="/images/logo.png" alt="logo" />
+            <img className="ui centered small image" id="logo" src="/images/logo.png" alt="logo" />
             <h1 className="ui center aligned header">
               Meteor Icon
               <div className="sub header">

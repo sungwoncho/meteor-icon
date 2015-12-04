@@ -6,6 +6,15 @@ body {
   padding-top: 5em;
 }
 
+#logo {
+  user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
 footer {
   padding: 20px 0;
   text-align: center;
