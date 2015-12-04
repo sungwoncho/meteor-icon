@@ -24,6 +24,10 @@ EmbedCode = React.createClass({
     }
   },
 
+  selectCode() {
+    this.refs.embedCode.select();
+  },
+
   render() {
     return (
       <textarea rows="5"
@@ -31,7 +35,8 @@ EmbedCode = React.createClass({
                 readOnly="readonly"
                 className="embed-code"
                 ref="embedCode"
-                value={this.getEmbedCode()} />
+                value={this.getEmbedCode()}
+                onFocus={this.selectCode} />
     );
   }
 });
