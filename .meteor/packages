@@ -23,3 +23,5 @@ react
 momentjs:moment
 meteorhacks:ssr
 aldeed:collection2
+semantic:ui
+flemay:less-autoprefixer
