@@ -18,7 +18,7 @@ EmbedCode = React.createClass({
 
     var base = `[![Meteor Icon](${iconPath})](https://atmospherejs.com/`;
     if (packageName.split(':')[1]) {
-      return base.concat(`${packageName.replace(/\:/, '/')}`);
+      return base.concat(`${packageName.replace(/\:/, '/')})`);
     } else {
       return base.concat(`meteor/${packageName.split(':')[0]})`);
     }
