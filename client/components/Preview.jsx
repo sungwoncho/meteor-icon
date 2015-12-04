@@ -5,7 +5,9 @@ Preview = React.createClass({
 
   render() {
     return (
-      <img src={this.getIconPath()} className="demo-icon"/>
+      <div>
+        <img src={this.getIconPath()} className="demo-icon"/>
+      </div>
     );
   }
 });

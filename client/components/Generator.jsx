@@ -7,15 +7,18 @@ Generator = React.createClass({
 
   render() {
     return (
-      <div>
+      <div className="generator">
         <form className="demo-form" onSubmit={this.handleSubmit}>
-          <input type="text"
-                 required="required"
-                 placeholder="Your package name (e.g. semantic:ui)"
-                 className="package-name"
-                 ref="packageName" />
-          <input type="submit"
-                 value="Get one"/>
+          <div className="ui action input">
+            <input type="text"
+                   required="required"
+                   placeholder="Your package name (e.g. semantic:ui)"
+                   className="package-name"
+                   ref="packageName" />
+                 <button className="ui blue button" type="submit">
+                   Get One
+                 </button>
+          </div>
         </form>
       </div>
     );

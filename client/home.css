@@ -1,5 +1,13 @@
 body {
-  font-family: 'Montserrat', sans-serif;
+  background: #EFEFEF;
+}
+
+#main-box {
+  padding-top: 5em;
+}
+
+footer {
+  padding: 20px 0;
   text-align: center;
 }
 
@@ -9,12 +17,6 @@ body {
   width: 270px;
 }
 
-.embed-code, img {
-  display: block;
-  margin: 0 auto;
-  margin-bottom: 12px;
-}
-
-footer {
-  padding: 20px 0;
+.generator {
+  margin: 3em 0;
 }
